@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "82:80"
     volumes:
       - .:/var/www/symfony54
       - ./docker/nginx/hosts:/etc/nginx/conf.d
@@ -14,16 +14,16 @@ services:
 
   php:
     build: ./docker/php
-    links:
-      - mariadb
+#    links:
+#      - mariadb
     volumes:
       - .:/var/www/symfony54
 
-  mariadb:
-    image: mariadb:latest
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./docker/mariadb:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
+#  mariadb:
+#    image: mariadb:latest
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - ./docker/mariadb:/var/lib/mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: secret
