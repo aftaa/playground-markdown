@@ -7,3 +7,5 @@ docker-compose up -d
 docker-compose exec php /bin/bash
 
 composer update
+
+http://localhost:82/
