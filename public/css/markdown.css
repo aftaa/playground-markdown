@@ -1,0 +1,11 @@
+#markdown_text, #markdown_result {
+    display: block;
+    font: 17px/20px Arial;
+    height: 200px;
+    padding: 0;
+    width: 1000px;
+}
+#markdown_result {
+    border: 1px solid #000;
+}
+
