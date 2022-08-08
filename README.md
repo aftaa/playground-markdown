@@ -4,8 +4,6 @@ cd playground-markdown
 
 docker-compose up -d
 
-docker-compose exec php /bin/bash
-
-composer update
+docker-compose exec php composer update
 
 http://localhost:82/
