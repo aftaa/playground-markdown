@@ -1,9 +1,11 @@
+## Как запустить проект
+
 git clone git@github.com:aftaa/playground-markdown.git
 
 cd playground-markdown
 
 docker-compose up -d
 
-docker-compose exec php composer update
+docker-compose exec php symfony composer update
 
 http://localhost:82/
