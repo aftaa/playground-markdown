@@ -26,6 +26,9 @@ class MarkdownService
     public function applyMarkdown(string $text): string
     {
         foreach ($this->rules as $rule) {
+            if (!$rule instanceof MarkdownRuleInterface) {
+                continue;
+            }
             $tag = $rule->getTag();
             $text = preg_replace($rule->getPattern(), "<$tag>\\2</$tag>", $text);
         }
