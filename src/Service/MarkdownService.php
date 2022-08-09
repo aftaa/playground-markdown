@@ -27,7 +27,7 @@ class MarkdownService
     {
         foreach ($this->rules as $rule) {
             $tag = $rule->getTag();
-            $text = preg_replace($rule->getPattern(), "<$tag>\2</$tag>", $text);
+            $text = preg_replace($rule->getPattern(), "<$tag>\\2</$tag>", $text);
         }
         return $text;
     }

@@ -30,11 +30,11 @@ class MarkdownController extends AbstractController
     public function result(Request $request): Response
     {
         $markdownService = new MarkdownService([
-            new EmMarkdownRule(),
             new StrongMarkdownRule(),
+            new EmMarkdownRule(),
         ]);
 
-        $text = $request->get('text', '');
+        $text = $request->query->get('text', '');
         $text = $markdownService->applyMarkdown($text);
         return new Response($text);
     }
