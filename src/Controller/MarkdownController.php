@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Form\MarkdownType;
+use App\Service\MarkdownService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,5 +21,14 @@ class MarkdownController extends AbstractController
         return $this->render('markdown/index.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/markdown/result", name="app_markdown_result")
+     */
+    public function result(Request $request, MarkdownService $markdownService): Response
+    {
+        echo $text = $request->get('text1');
+//        echo $text = $markdownService->applyMarkdown($text);
+        return new Response($text);
     }
 }
