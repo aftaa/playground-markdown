@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
+use App\Factory\MarkdownServiceFactory;
 use App\Form\MarkdownType;
-use App\MarkdownRule\EmMarkdownRule;
-use App\MarkdownRule\StrongMarkdownRule;
-use App\Service\MarkdownService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,15 +25,10 @@ class MarkdownController extends AbstractController
     /**
      * @Route("/markdown/result", name="app_markdown_result")
      */
-    public function result(Request $request): Response
+    public function result(Request $request, MarkdownServiceFactory $factory): Response
     {
-        $markdownService = new MarkdownService([
-            new StrongMarkdownRule(),
-            new EmMarkdownRule(),
-        ]);
-
         $text = $request->query->get('text', '');
-        $text = $markdownService->applyMarkdown($text);
+        $text = $factory->service->applyMarkdown($text);
         return new Response($text);
     }
 }
